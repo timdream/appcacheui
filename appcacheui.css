@@ -51,7 +51,7 @@
   display: block;
 }
 
-#appcache_info.appcache-checking,
+body.appcache-allinfo #appcache_info.appcache-checking,
 #appcache_info.appcache-downloading,
 #appcache_info.appcache-progress,
 #appcache_info.appcache-updateready,
@@ -65,8 +65,8 @@
   font-weight: bold;
 }
 
-#appcache_info.appcache-noupdate,
-#appcache_info.appcache-error,
+body.appcache-allinfo #appcache_info.appcache-noupdate,
+body.appcache-allinfo #appcache_info.appcache-error,
 #appcache_info.appcache-cached {
   top: -2em;
 
