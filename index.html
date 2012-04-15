@@ -1,0 +1,64 @@
+<!doctype html>
+<html manifest="site.appcache" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>AppCache Status UI</title>
+  <link rel="stylesheet" href="appcacheui.css">
+</head>
+<body>
+<h1>AppCache Status UI</h1>
+<h2>What&rsquo;s this?</h2>
+
+<p>AppCacheUI.js is a 0.75k (minified) script that inform users about the status of Offline AppCache of the current page,
+<strong>in a non-invasive way.</strong>
+
+<p>Offline-enabled WebApps often reload the page or do <code>window.confirm</code> upon <code>updateready</code>.
+We don't want that.
+With this script, whenever there is a new version, a info bar will popup on the top instruction user to reload, without interrupting the running app.</p>
+
+<h2>Code</h2>
+
+<ul>
+<li><a href="appcacheui.js">appcacheui.js</a> (<a href="appcacheui.min.js">minified</a>)</li>
+<li><a href="https://github.com/timdream/appcacheui">Github</a></li>
+</ul>
+
+<h2>License</h2>
+
+<p><a href="COPYING">MIT License</a></p>
+
+<h2>Try out</h2>
+
+<p>To see how it works in real world, you would need to set this page up on your own server and change the manifest.
+Here are hacks for you to see the style of the info bar in different state.</p>
+
+<ul>
+<li>First event: <a class="event" href="">checking</a></li>
+<li>Intermediate events: <a class="event" href="">downloading</a>, <a class="event" href="">progress</a> (progress not shown)</li>
+<li>Last events (inform): <a class="event" href="">updateready</a>, <a class="event" href="">obsolete</a></li>
+<li>Last events (dismiss automatically): <a class="event" href="">noupdate</a>, <a class="event" href="">cached</a>, <a class="event" href="">error</a></li>
+</ul>
+
+<script>
+window.onload = function () {
+  var eventEls = document.getElementsByClassName('event');
+  var info = document.getElementById('appcache_info');
+  for (var i = 0; i < eventEls.length; i++) {
+    eventEls[i].onclick = function (ev) {
+      ev.preventDefault();
+      info.className =
+        info.className.replace(/ ?appcache\-.+\b/g, '')
+        + ' appcache-' + this.innerHTML;
+    };
+  }
+};
+</script>
+
+<h2>Style &amp; text &amp; l10n</h2>
+
+<p>All the string and the style rules you need is in the <a href="appcacheui.css">stylesheet</a>. Use <code>:before</code> to do UI string is not ideal especially when involving accessibility, but CSS help us do localization easily.</p>
+<script src="appcacheui.js"></script>
+</body>
+</html>

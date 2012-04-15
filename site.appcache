@@ -1,0 +1,9 @@
+CACHE MANIFEST
+# v 1
+
+CACHE:
+./appcacheui.js
+./appcacheui.css
+
+NETWORK:
+*
