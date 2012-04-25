@@ -26,6 +26,10 @@ var AppCacheUI = {
       var info = doc.cE('div');
       info.id = INFO_ID;
       a.href = '';
+      a.addEventListener('click', function (ev) {
+        ev.stopPropagation();
+        window.location.reload();
+      }, true /* useCapture */);
       info.appendChild(a);
 
       if (body.firstChild)
