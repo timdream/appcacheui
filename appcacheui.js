@@ -56,8 +56,18 @@ var AppCacheUI = {
       this.info.className.replace(/ ?appcache\-.+\b/g, '')
       + ' appcache-' + ev.type;
 
-    if (ev.type === 'progress' && ev.total)
-      this.info.setAttribute('data-progress', (ev.loaded + 1) + '/' + ev.total);
+    if (ev.type === 'downloading')
+      this.count = 0;
+
+    if (ev.type === 'progress') {
+      this.count++;
+      var progress;
+      if (ev.total)
+        progress = (ev.loaded + 1) + '/' + ev.total;
+      else
+        progress = this.count;
+      this.info.setAttribute('data-progress', progress);
+    }
   }
 };
 
