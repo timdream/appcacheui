@@ -56,9 +56,7 @@ var AppCacheUI = {
       this.info.className.replace(/ ?appcache\-.+\b/g, '')
       + ' appcache-' + ev.type;
 
-    if (ev.type === 'downloading')
-      this.count = 0;
-
+    this.count = this.count || 0;
     if (ev.type === 'progress') {
       this.count++;
       var progress;
